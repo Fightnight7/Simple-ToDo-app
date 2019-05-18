@@ -1,18 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './ToDoItem.css';
 
-class ToDoItem extends Component {
-
-    render() {
+const ToDoItem = (props) => {
         return (
             <div className="ToDoItem">
-                <p className="ToDoItem-Text">{this.props.item}</p>
+                <p className="ToDoItem-Text">{props.item}</p>
                 <button className="ToDoItem-Delete"
-                     onClick={this.props.deleteItem}>-
+                     onClick={props.deleteItem}>-
                 </button>
             </div>
         );
-    }
-}
+};
 
 export default ToDoItem;

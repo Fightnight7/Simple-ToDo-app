@@ -4,56 +4,42 @@ import ToDoItem from './components/ToDoItem';
 import Logo from './assets/logo.png';
 
 class ToDo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            list: [
-                {
-                    'todo': 'clean the house'
-                },
-                {
-                    'todo': 'buy milk'
-                }
-            ],
-            todo: ''
-        };
+    state = {
+        list: [
+            {
+                'todo': 'clean the house'
+            },
+            {
+                'todo': 'buy milk'
+            }
+        ],
+        todo: ''
     };
 
     createNewToDoItem = () => {
-      this.setState(({ list, todo }) => ({
-        list: [
-            ...list,
-          {
-            todo
-          }
-        ],
-        todo: ''
-      }));
-    };
-
-
-    handleKeyPress = e => {
-        if (e.target.value !== '') {
-          if (e.key === 'Enter') {
-            this.createNewToDoItem();
-          }
-        }
+        this.setState(({list, todo}) => ({
+            list: [
+                ...list,
+                {
+                    todo
+                }
+            ],
+            todo: ''
+        }));
     };
 
     handleInput = e => {
-      this.setState({
-        todo: e.target.value
-      });
-    };
+            this.setState({
+                todo: e.target.value
+            });
+        };
 
-
-    // this is now being emitted back to the parent from the child component
     deleteItem = indexToDelete => {
-      this.setState(({ list }) => ({
-        list: list.filter((toDo, index) => index !== indexToDelete)
-      }));
+        console.log(this.state.list)
+        this.setState(({list}) => ({
+            list: list.filter((todo, index) => index !== indexToDelete)
+        }));
     };
-
 
     render() {
         return (
@@ -61,24 +47,20 @@ class ToDo extends Component {
                 <img className="Logo" src={Logo} alt="React logo"/>
                 <h1 className="ToDo-Header">React To Do</h1>
                 <div className="ToDo-Container">
-
                     <div className="ToDo-Content">
-
                         {this.state.list.map((item, key) => {
                                 return <ToDoItem
-                                                key={key}
-                                                item={item.todo}
-                                                deleteItem={this.deleteItem.bind(this, key)}
-                                                />
-                          }
+                                    key={key}
+                                    item={item.todo}
+                                    deleteItem={() => this.deleteItem(key)}
+                                />
+                            }
                         )}
                     </div>
-
                     <div>
-                       <input type="text" value={this.state.todo} onChange={this.handleInput} onKeyPress={this.handleKeyPress}/>
-                       <button className="ToDo-Add" onClick={this.createNewToDoItem}>+</button>
+                        <input type="text" value={this.state.todo} onChange={this.handleInput}/>
+                        <button className="ToDo-Add" onClick={this.createNewToDoItem}>+</button>
                     </div>
-
                 </div>
             </div>
         );

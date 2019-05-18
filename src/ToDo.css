@@ -40,20 +40,19 @@ body {
   font-size: 2em;
   width: 40px;
   height: 40px;
-  padding: 0px;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background: #73ff73;
+  background: lawngreen;
   border-radius: 10px;
-  box-shadow: 1px 1px 1px #47a947;
+  border: none;
   margin: 20px auto 0;
 }
 
 .ToDo-Add:hover {
-  box-shadow: none;
-  margin-left: calc(auto + 1px);
+  background-color: green;
 }
 
 .ToDo-Container {
@@ -66,5 +65,5 @@ input {
   padding: 10px;
   font-size: 1em;
   margin: 10px auto;
-  box-shadow: 1px 3px 20px 0px rgba(0, 0, 0, 0.3)
+  border: 2px dashed green;
 }
